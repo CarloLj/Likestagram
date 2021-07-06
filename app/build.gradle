@@ -26,6 +26,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    //Be able to help reduce boilerplate in code and use binding classes instead of the object R
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -36,4 +40,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Be able to use parse server and
+    implementation 'com.github.parse-community.Parse-SDK-Android:parse:1.25.0'
+    // for logging API calls to LogCat
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
 }
