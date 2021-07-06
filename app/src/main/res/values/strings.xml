@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Likestagram</string>
     <string name="sign_in">SIGN IN</string>
+    <string name="submit">SUBMIT</string>
+    <string name="take_picture">TAKE PICTURE</string>
 </resources>
