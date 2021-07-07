@@ -30,6 +30,12 @@ android {
     buildFeatures{
         viewBinding true
     }
+
+    ext {
+        appCompatVersion = '1.0.0'
+        designSupportVersion = '1.0.0'
+        recyclerViewVersion = '1.0.0'
+    }
 }
 
 dependencies {
@@ -46,4 +52,9 @@ dependencies {
     implementation 'com.github.parse-community.Parse-SDK-Android:parse:1.25.0'
     // for logging API calls to LogCat
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
+    //Percent support library
+    implementation "androidx.percentlayout:percentlayout:1.0.0"
+
+    implementation "androidx.transition:transition:1.1.0"
 }

@@ -3,4 +3,8 @@
     <string name="sign_in">SIGN IN</string>
     <string name="submit">SUBMIT</string>
     <string name="take_picture">TAKE PICTURE</string>
+    <string name="text_home">Home</string>
+    <string name="text_compose">Compose</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_logout">LOGOUT</string>
 </resources>

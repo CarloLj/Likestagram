@@ -1,8 +1,11 @@
 package com.carlolj.likestagram;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.carlolj.likestagram.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -37,10 +42,19 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final String TAG = "MainActivity";
+
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+
+    //final Fragment home = new homeFragment();
+    //final Fragment compose = new composeFragment();
+    //final Fragment profile = new profileFragment();
+
     private EditText etDescription;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private BottomNavigationView bottomNavigation;
+
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -57,7 +71,32 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = binding.btnCaptureImage;
         ivPostImage = binding.ivPostImage;
         btnSubmit = binding.btnSubmit;
+        bottomNavigation = binding.bottomNavigation;
 
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        //fragment = home;
+                        Log.d(TAG, "HOME");
+                        return true;
+                    case R.id.action_compose:
+                        //fragment = compose;
+                        Log.d(TAG, "COMPOSE");
+                        return true;
+                    case R.id.action_profile:
+                        //fragment = profile;
+                        Log.d(TAG, "PROFILE");
+                        return true;
+                    default: return true;
+                }
+                //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                //return true;
+            }
+        });
+        bottomNavigation.setSelectedItemId(R.id.action_home);
         queryPosts();
     }
 
