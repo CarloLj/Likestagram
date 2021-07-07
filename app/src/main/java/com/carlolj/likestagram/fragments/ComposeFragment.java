@@ -79,6 +79,20 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLaunchCamera();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSubmit();
+            }
+        });
     }
 
 
@@ -97,7 +111,7 @@ public class ComposeFragment extends Fragment {
         startActivity(i);
     }
 
-    public void onLaunchCamera(View view) {
+    public void onLaunchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for future access
@@ -147,7 +161,7 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-    public void onSubmit(View view) {
+    public void onSubmit() {
         String description = etDescription.getText().toString();
         if (description.isEmpty()) {
             Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();

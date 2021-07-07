@@ -10,14 +10,9 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.carlolj.likestagram.fragments.ComposeFragment;
-import com.carlolj.likestagram.fragments.HomeFragment;
+import com.carlolj.likestagram.fragments.PostsFragment;
 import com.carlolj.likestagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
 
-    final Fragment home = new HomeFragment();
+    final Fragment home = new PostsFragment();
     final Fragment compose = new ComposeFragment();
     final Fragment profile = new ProfileFragment();
 
@@ -51,32 +46,18 @@ public class MainActivity extends AppCompatActivity {
                         fragment = compose;
                         Log.d(TAG, "COMPOSE");
                         break;
-                    default:
+                    case R.id.action_profile:
                         fragment = profile;
                         Log.d(TAG, "PROFILE");
                         break;
+                    default:
+                        fragment= home;
+                    break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
         bottomNavigation.setSelectedItemId(R.id.action_home);
-        queryPosts();
-    }
-
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
-                    Log.e(TAG, "Issue with getting posts", e);
-                }
-                for(Post post : posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                }
-            }
-        });
     }
 }
