@@ -40,19 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         fragment = home;
-                        Log.d(TAG, "HOME");
                         break;
                     case R.id.action_compose:
                         fragment = compose;
-                        Log.d(TAG, "COMPOSE");
-                        break;
-                    case R.id.action_profile:
-                        fragment = profile;
-                        Log.d(TAG, "PROFILE");
                         break;
                     default:
-                        fragment= home;
-                    break;
+                        fragment = profile;
+                        break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
