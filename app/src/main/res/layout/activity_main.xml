@@ -8,43 +8,11 @@
     tools:context=".MainActivity"
     android:layout_margin="16dp">
 
-    <EditText
-        android:id="@+id/etDescription"
+    <FrameLayout
+        android:id="@+id/flContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Description..." />
-
-    <Button
-        android:layout_below="@+id/etDescription"
-        android:id="@+id/btnCaptureImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onLaunchCamera"
-        android:text="@string/take_picture"/>
-
-    <ImageView
-        android:layout_below="@+id/btnCaptureImage"
-        android:id="@+id/ivPostImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:layout_below="@+id/ivPostImage"
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onSubmit"
-        android:text="@string/submit"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottomNavigation"
-        android:layout_marginBottom="0dp"
-        android:onClick="onLogout"
-        android:text="@string/text_logout" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
