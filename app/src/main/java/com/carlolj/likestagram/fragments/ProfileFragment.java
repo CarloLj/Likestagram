@@ -70,6 +70,7 @@ public class ProfileFragment extends Fragment {
         tvUsername.setText(user.getUsername());
         Glide.with(getContext())
                 .load(user.getParseFile("profilePicture").getUrl())
+                .transform(new CircleCrop())
                 .into(ivProfileImage);
 
         // Setup refresh listener which triggers new data loading

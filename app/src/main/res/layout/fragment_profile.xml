@@ -10,10 +10,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/ivProfileImage"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/tvUsername"

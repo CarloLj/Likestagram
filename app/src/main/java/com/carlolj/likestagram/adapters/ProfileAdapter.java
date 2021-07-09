@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.carlolj.likestagram.DetailsActivity;
 import com.carlolj.likestagram.R;
 import com.carlolj.likestagram.fragments.ProfileFragment;
@@ -74,7 +75,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         public void bind(Post post) {
             ParseFile image = post.getImage();
             if(image != null) {
-                Glide.with(ivImage.getContext()).load(image.getUrl()).into(ivImage);
+                Glide.with(ivImage.getContext())
+                        .load(image.getUrl())
+                        .into(ivImage);
             }
         }
     }

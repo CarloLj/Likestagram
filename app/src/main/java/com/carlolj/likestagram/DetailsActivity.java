@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.carlolj.likestagram.adapters.PostsAdapter;
 import com.carlolj.likestagram.databinding.ActivityDetailsBinding;
 import com.carlolj.likestagram.models.Post;
@@ -56,10 +57,15 @@ public class DetailsActivity extends AppCompatActivity {
             tvLikes.setText("No");
         }
         if(image != null) {
-            Glide.with(ivPostImage.getContext()).load(image.getUrl()).into(ivPostImage);
+            Glide.with(ivPostImage.getContext())
+                    .load(image.getUrl())
+                    .into(ivPostImage);
         }
         if(userProfilePicture != null) {
-            Glide.with(ivProfileImage.getContext()).load(userProfilePicture.getUrl()).into(ivProfileImage);
+            Glide.with(ivProfileImage.getContext())
+                    .load(userProfilePicture.getUrl())
+                    .transform(new CircleCrop())
+                    .into(ivProfileImage);
         }
 
     }

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.carlolj.likestagram.DetailsActivity;
 import com.carlolj.likestagram.fragments.ProfileFragment;
 import com.carlolj.likestagram.models.Post;
@@ -113,10 +114,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 tvLikes.setText("No");
             }
             if(image != null) {
-                Glide.with(ivPostImage.getContext()).load(image.getUrl()).into(ivPostImage);
+                Glide.with(ivPostImage.getContext())
+                        .load(image.getUrl())
+                        .into(ivPostImage);
             }
             if(userProfilePicture != null) {
-                Glide.with(ivProfileImage.getContext()).load(userProfilePicture.getUrl()).into(ivProfileImage);
+                Glide.with(ivProfileImage.getContext())
+                        .load(userProfilePicture.getUrl())
+                        .transform(new CircleCrop())
+                        .into(ivProfileImage);
             }
         }
 
