@@ -32,6 +32,7 @@ public class ProfileFragment extends PostsFragment {
             public void done(List<Post> posts, ParseException e) {
                 if(e!=null){
                     Log.e(TAG, "Issue with getting posts", e);
+                    return;
                 }
                 for(Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());

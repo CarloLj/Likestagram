@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/instagram_new_post_outline_24">
+        <shape android:shape="oval">
+            <size
+                android:width="12dp"
+                android:height="12dp"/>
+            <solid android:color="@color/teal_200"/>
+        </shape>
+    </item>
+</selector>

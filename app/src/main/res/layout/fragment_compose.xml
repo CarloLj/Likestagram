@@ -29,13 +29,12 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSubmit"
         android:text="@string/submit"/>
 
     <Button
+        android:id="@+id/btnLogOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onLogout"
         android:text="@string/text_logout" />
 
 </LinearLayout>
