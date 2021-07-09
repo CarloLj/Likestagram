@@ -52,7 +52,7 @@ public class ComposeFragment extends Fragment {
     private EditText etDescription;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
-    private Button btnSubmit, btnLogOut;
+    private Button btnSubmit;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -76,7 +76,6 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
-        btnLogOut = view.findViewById(R.id.btnLogOut);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,24 +90,6 @@ public class ComposeFragment extends Fragment {
                 onSubmit();
             }
         });
-
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onLogout();
-            }
-        });
-    }
-
-    public void onLogout() {
-        // forget who's logged in
-        ParseUser.logOut();
-
-        // navigate backwards to Login screen
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
-        startActivity(i);
     }
 
     public void onLaunchCamera() {

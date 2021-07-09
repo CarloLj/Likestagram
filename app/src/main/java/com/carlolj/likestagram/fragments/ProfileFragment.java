@@ -1,5 +1,6 @@
 package com.carlolj.likestagram.fragments;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -14,11 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.carlolj.likestagram.LoginActivity;
 import com.carlolj.likestagram.adapters.ProfileAdapter;
 import com.carlolj.likestagram.models.Post;
 import com.carlolj.likestagram.adapters.PostsAdapter;
@@ -41,6 +44,7 @@ public class ProfileFragment extends Fragment {
     private SwipeRefreshLayout swipeContainer;
     private ImageView ivProfileImage;
     private TextView tvUsername;
+    private Button btnLogOut;
     protected ProfileAdapter adapter;
     protected List<Post> allPosts;
     private ParseUser user;
@@ -66,6 +70,7 @@ public class ProfileFragment extends Fragment {
         swipeContainer = view.findViewById(R.id.swipeContainer);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         tvUsername = view.findViewById(R.id.tvUsername);
+        btnLogOut = view.findViewById(R.id.btnLogOut);
 
         tvUsername.setText(user.getUsername());
         Glide.with(getContext())
@@ -88,6 +93,19 @@ public class ProfileFragment extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
+        if (ParseUser.getCurrentUser() == user) {
+            btnLogOut.setVisibility(View.VISIBLE);
+            btnLogOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLogout();
+                }
+            });
+        } else {
+            btnLogOut.setVisibility(View.INVISIBLE);
+        }
+
 
         //set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
@@ -116,5 +134,16 @@ public class ProfileFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    public void onLogout() {
+        // forget who's logged in
+        ParseUser.logOut();
+
+        // navigate backwards to Login screen
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
+        startActivity(i);
     }
 }
