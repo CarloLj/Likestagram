@@ -20,6 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView tvUsername;
     private TextView tvDescription;
     private TextView tvLikes;
+    private TextView tvTime;
     private ImageView ivPostImage;
     private ImageView ivProfileImage;
 
@@ -41,9 +42,11 @@ public class DetailsActivity extends AppCompatActivity {
         tvUsername = binding.tvUsername;
         ivPostImage = binding.ivPostImage;
         ivProfileImage = binding.ivProfileImage;
+        tvTime = binding.tvTime;
 
         tvDescription.setText(post.getDescription());
         tvUsername.setText(post.getUser().getUsername());
+        tvTime.setText(PostsAdapter.calculateTimeAgo(post.getCreatedAt()));
         ParseFile image = post.getImage();
         ParseFile userProfilePicture = post.getUser().getParseFile("profilePicture");
         int likes = post.getLikes();
