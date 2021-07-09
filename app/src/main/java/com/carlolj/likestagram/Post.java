@@ -1,9 +1,12 @@
 package com.carlolj.likestagram;
 
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import java.io.File;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
