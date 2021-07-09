@@ -14,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.carlolj.likestagram.PostsAdapter;
-import com.carlolj.likestagram.Post;
+import com.carlolj.likestagram.adapters.PostsAdapter;
+import com.carlolj.likestagram.models.Post;
 import com.carlolj.likestagram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;

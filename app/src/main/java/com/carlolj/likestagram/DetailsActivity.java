@@ -2,15 +2,15 @@ package com.carlolj.likestagram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.carlolj.likestagram.adapters.PostsAdapter;
 import com.carlolj.likestagram.databinding.ActivityDetailsBinding;
+import com.carlolj.likestagram.models.Post;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;

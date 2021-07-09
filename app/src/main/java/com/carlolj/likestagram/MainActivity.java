@@ -16,6 +16,8 @@ import com.carlolj.likestagram.fragments.ComposeFragment;
 import com.carlolj.likestagram.fragments.PostsFragment;
 import com.carlolj.likestagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     final Fragment home = new PostsFragment();
     final Fragment compose = new ComposeFragment();
-    final Fragment profile = new ProfileFragment();
+    final Fragment profile = new ProfileFragment(ParseUser.getCurrentUser());
 
     private BottomNavigationView bottomNavigation;
 
@@ -72,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         // Remove default title text
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         bottomNavigation = findViewById(R.id.bottomNavigation);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

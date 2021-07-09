@@ -24,11 +24,8 @@ import android.widget.Toast;
 
 import com.carlolj.likestagram.BitmapScaler;
 import com.carlolj.likestagram.LoginActivity;
-import com.carlolj.likestagram.MainActivity;
-import com.carlolj.likestagram.Post;
+import com.carlolj.likestagram.models.Post;
 import com.carlolj.likestagram.R;
-import com.carlolj.likestagram.databinding.ActivityMainBinding;
-import com.carlolj.likestagram.databinding.FragmentComposeBinding;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;

@@ -1,8 +1,7 @@
-package com.carlolj.likestagram;
+package com.carlolj.likestagram.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Movie;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.parse.FindCallback;
-import com.parse.ParseException;
+import com.carlolj.likestagram.DetailsActivity;
+import com.carlolj.likestagram.fragments.ProfileFragment;
+import com.carlolj.likestagram.models.Post;
+import com.carlolj.likestagram.R;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
@@ -56,7 +57,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         return posts.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvUsername;
         private TextView tvDescription;
@@ -81,7 +82,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             ivProfileImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Clicked on profile image", Toast.LENGTH_SHORT).show();
+                    AppCompatActivity activity = (AppCompatActivity) context;
+                    Fragment fragment;
+                    fragment = new ProfileFragment(posts.get(getAdapterPosition()).getUser());
+                    ((AppCompatActivity) context).getSupportFragmentManager();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+                    Toast.makeText(itemView.getContext(), "Opening selected profile", Toast.LENGTH_SHORT).show();
                 }
             });
 
