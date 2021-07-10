@@ -143,11 +143,11 @@ public class ProfileFragment extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                for(Post post : posts){
+                for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
                 allPosts.addAll(posts);
@@ -185,7 +185,7 @@ public class ProfileFragment extends Fragment {
         Bitmap image = null;
         try {
             // check version of Android on device
-            if(Build.VERSION.SDK_INT > 27){
+            if (Build.VERSION.SDK_INT > 27) {
                 // on newer versions of Android, use the new decodeBitmap method
                 ImageDecoder.Source source = ImageDecoder.createSource(getActivity().getContentResolver(), photoUri);
                 image = ImageDecoder.decodeBitmap(source);
@@ -219,7 +219,7 @@ public class ProfileFragment extends Fragment {
             user.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
-                    if (e!=null) {
+                    if (e != null) {
                        Log.e(TAG, "Profile image wasn't updated", e);
                        return;
                     }

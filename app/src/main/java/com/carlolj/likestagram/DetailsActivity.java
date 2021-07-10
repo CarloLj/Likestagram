@@ -63,23 +63,22 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
         int likes = post.getLikesNumber();
-        if(likes!=0){
+        if (likes != 0) {
             tvLikes.setText(String.valueOf(likes));
-        }else{
+        } else {
             tvLikes.setText("No");
         }
 
-        if(image != null) {
+        if (image != null) {
             Glide.with(ivPostImage.getContext())
                     .load(image.getUrl())
                     .into(ivPostImage);
         }
-        if(userProfilePicture != null) {
+        if (userProfilePicture != null) {
             Glide.with(ivProfileImage.getContext())
                     .load(userProfilePicture.getUrl())
                     .transform(new CircleCrop())
                     .into(ivProfileImage);
         }
-
     }
 }

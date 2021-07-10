@@ -44,7 +44,7 @@ public class Post extends ParseObject {
 
     public boolean isLiked() {
         List<String> list = getList(KEY_LIKED_BY);
-        return list!=null && list.contains(ParseUser.getCurrentUser().getObjectId());
+        return list != null && list.contains(ParseUser.getCurrentUser().getObjectId());
     }
 
     private void setLikedBy(List<String> list) {
@@ -53,7 +53,7 @@ public class Post extends ParseObject {
 
     public void removeLike(String id){
         List<String> list = getList(KEY_LIKED_BY);
-        if(list==null)
+        if (list == null)
             list = new ArrayList<>();
         list.remove(id);
         setLikedBy(list);

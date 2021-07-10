@@ -18,8 +18,7 @@ public class PostHelper {
 
     public static void LikePost(Post post, ImageView btnFavorite, TextView tvLikesNumber, Context context) {
         ParseUser user = ParseUser.getCurrentUser();
-        if (!post.isLiked())
-        {
+        if (!post.isLiked()) {
             post.addLike(user.getObjectId());
             post.saveInBackground(new SaveCallback() {
                 @Override
@@ -33,8 +32,7 @@ public class PostHelper {
                     tvLikesNumber.setText(String.valueOf(post.getLikesNumber()));
                 }
             });
-        }
-        else {
+        } else {
             post.removeLike(user.getObjectId());
             post.saveInBackground(new SaveCallback() {
                 @Override

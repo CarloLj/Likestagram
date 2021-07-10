@@ -124,7 +124,7 @@ public class ComposeFragment extends Fragment {
         File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
 
@@ -152,7 +152,7 @@ public class ComposeFragment extends Fragment {
             Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (photoFile == null || ivPostImage.getDrawable() == null){
+        if (photoFile == null || ivPostImage.getDrawable() == null) {
             Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -200,7 +200,7 @@ public class ComposeFragment extends Fragment {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
