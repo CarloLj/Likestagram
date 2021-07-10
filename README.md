@@ -57,15 +57,17 @@ GIF created with [Kap](https://getkap.co/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [Android Async Http Client](http://loopj.com/android-async-http/) - networking library
-
+- [Parse Backend](https://parseplatform.org/) - Backend library
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+In this app we used Parse library which is an amazing tool
+The app was easier because we defined our Database calls
+The most difficult part was implementing the like button
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2021 Carlo Angel Lujan Garcia
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
