@@ -124,6 +124,7 @@ public class ProfileFragment extends Fragment {
             });
         } else {
             btnLogOut.setVisibility(View.INVISIBLE);
+            btnChangePicture.setVisibility(View.INVISIBLE);
         }
 
 

@@ -54,7 +54,9 @@
         android:onClick="onLogin"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_shape"
+        android:alpha=".8"/>
 
     <Button
         android:id="@+id/btnLogUp"
@@ -67,5 +69,7 @@
         android:onClick="onLogUp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_shape_yellow"
+        android:alpha=".8"/>
 </RelativeLayout>
