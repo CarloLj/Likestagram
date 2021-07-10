@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.carlolj.likestagram.BitmapScaler;
@@ -53,6 +54,7 @@ public class ComposeFragment extends Fragment {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private ProgressBar progressBar;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -76,6 +78,8 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        progressBar = view.findViewById(R.id.pb);
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,6 +192,7 @@ public class ComposeFragment extends Fragment {
     }
 
     private void savePost(String description, ParseUser currentUser, File photoFile) {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
         Post post = new Post();
         post.setDescription(description);
         post.setUser(currentUser);
@@ -198,10 +203,12 @@ public class ComposeFragment extends Fragment {
                 if(e!=null){
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                 }
                 Log.i(TAG, "Post save was successful!!");
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
