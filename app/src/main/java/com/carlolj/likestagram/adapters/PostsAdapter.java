@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.carlolj.likestagram.DetailsActivity;
+import com.carlolj.likestagram.controllers.PostHelper;
 import com.carlolj.likestagram.fragments.ProfileFragment;
 import com.carlolj.likestagram.models.Post;
 import com.carlolj.likestagram.R;
@@ -91,14 +92,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                     Toast.makeText(itemView.getContext(), "Opening selected profile", Toast.LENGTH_SHORT).show();
                 }
             });
-
-            ivLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Clicked on like button", Toast.LENGTH_SHORT).show();
-                    ivLike.setImageResource(R.drawable.ufi_heart_active);
-                }
-            });
         }
 
         public void bind(Post post) {
@@ -107,7 +100,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             tvCreatedAt.setText(calculateTimeAgo(post.getCreatedAt()));
             ParseFile image = post.getImage();
             ParseFile userProfilePicture = post.getUser().getParseFile("profilePicture");
-            int likes = post.getLikes();
+
+            PostHelper.getLikesCount(post, tvLikes);
+            PostHelper.getLikeState(post, ivLike);
+
+            ivLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PostHelper.LikePost(post, ivLike, tvLikes, context);
+                }
+            });
+
+            int likes = post.getLikesNumber();
             if(likes!=0){
                 tvLikes.setText(String.valueOf(likes));
             }else{
